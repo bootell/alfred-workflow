@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.bootell.alfred.jsonformatter</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>7D98DAB5-7B9B-4A31-B127-3D1BB0D8B901</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>96089F23-E99F-44B8-A25F-F383422AF4F5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>96089F23-E99F-44B8-A25F-F383422AF4F5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8D0C6B93-E753-4E75-9681-907D4EF92618</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>bootell</string>
+	<key>description</key>
+	<string>Parse JSON strings, and open in Browser.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>JSON Formatter</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>/usr/bin/python3 parse_json.py "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>5</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>96089F23-E99F-44B8-A25F-F383422AF4F5</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>json</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>JSON Format</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>7D98DAB5-7B9B-4A31-B127-3D1BB0D8B901</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string>com.google.Chrome</string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>8D0C6B93-E753-4E75-9681-907D4EF92618</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string># JSON Formatter
+
+Keyword: `json`
+
+Use `json &lt;text&gt;` to parse the text from Alfred, or run `json` with no argument to parse the current clipboard.
+
+The workflow repeatedly parses JSON strings. When JSON parsing fails, it tries Python literal deserialization. The final value is written to Alfred's workflow cache directory as a `.json` file. The script outputs a `file://` URL, and Alfred's Open URL action opens it in the default browser.
+
+Generated files live under `$alfred_workflow_cache`. The workflow does not delete them itself; cache removal is left to Alfred/macOS cache handling and Alfred's workflow data/cache deletion flow.</string>
+	<key>uidata</key>
+	<dict>
+		<key>7D98DAB5-7B9B-4A31-B127-3D1BB0D8B901</key>
+		<dict>
+			<key>xpos</key>
+			<real>170</real>
+			<key>ypos</key>
+			<real>120</real>
+		</dict>
+		<key>8D0C6B93-E753-4E75-9681-907D4EF92618</key>
+		<dict>
+			<key>xpos</key>
+			<real>690</real>
+			<key>ypos</key>
+			<real>120</real>
+		</dict>
+		<key>96089F23-E99F-44B8-A25F-F383422AF4F5</key>
+		<dict>
+			<key>xpos</key>
+			<real>430</real>
+			<key>ypos</key>
+			<real>120</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.2</string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
