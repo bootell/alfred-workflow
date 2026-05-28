@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.bootell.alfred.iplookup</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>1A5B7CF1-76A7-4EB8-96EE-940B4B9C8096</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>54E1AC91-56A5-4A68-8EA7-B69F4138F58F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>bootell</string>
+	<key>description</key>
+	<string>Look up IP geolocation for IP addresses, domains, or the current public IP.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>IP Lookup</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>{var:KEYWORD}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Looking up IP...</string>
+				<key>script</key>
+				<string>/usr/bin/python3 ip_lookup.py "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string>Look up IP geolocation</string>
+				<key>title</key>
+				<string>IP Lookup</string>
+				<key>type</key>
+				<integer>5</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>1A5B7CF1-76A7-4EB8-96EE-940B4B9C8096</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>54E1AC91-56A5-4A68-8EA7-B69F4138F58F</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string># IP Lookup
+
+Keyword: `ip`
+
+Look up IP geolocation for IP addresses, domains, or the current public IP.
+
+## Usage
+
+- `ip`: query the current public IP address and geolocation.
+- `ip 8.8.8.8`: query an IPv4 address.
+- `ip 2001:4860:4860::8888`: query an IPv6 address.
+- `ip example.com`: resolve the domain, query the first resolved IP address, and show its geolocation.
+
+Press Return on an item to copy that item's title.
+
+## Output
+
+- First item: `country regionName city district`
+- Network items: `isp`, then `org`
+- Optional `IP Flags` item: `mobile`, `proxy`, or `mobile / proxy`, shown only when one of those flags applies
+
+When the query is empty, the first item shows the current public IP address. The following items then show location (`country regionName city district`), network (`isp`, then `org`), and optional connection or IP range flags.
+
+For private or reserved IP ranges, the workflow only shows a single `private` or `reserved` item with the `IP Flags` subtitle.
+
+## Configuration
+
+- `KEYWORD`: Alfred keyword. Default: `ip`
+- `LANGUAGE`: ip-api response language. Default: `zh-CN`
+- `TIMEOUT_SECONDS`: network timeout in seconds. Default: `5`
+
+This workflow uses the free ip-api.com JSON endpoint. The free endpoint does not require an API key, uses HTTP, is rate limited, and is intended for non-commercial use.</string>
+	<key>uidata</key>
+	<dict>
+		<key>1A5B7CF1-76A7-4EB8-96EE-940B4B9C8096</key>
+		<dict>
+			<key>xpos</key>
+			<integer>170</integer>
+			<key>ypos</key>
+			<integer>120</integer>
+		</dict>
+		<key>54E1AC91-56A5-4A68-8EA7-B69F4138F58F</key>
+		<dict>
+			<key>xpos</key>
+			<integer>430</integer>
+			<key>ypos</key>
+			<integer>120</integer>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>ip</string>
+				<key>placeholder</key>
+				<string>ip</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword used to trigger this workflow.</string>
+			<key>label</key>
+			<string>Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>KEYWORD</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>zh-CN</string>
+				<key>placeholder</key>
+				<string>zh-CN</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>ip-api response language, for example zh-CN, en, ja, de, es, fr.</string>
+			<key>label</key>
+			<string>Language</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>LANGUAGE</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>5</string>
+				<key>placeholder</key>
+				<string>5</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Network timeout in seconds.</string>
+			<key>label</key>
+			<string>Timeout Seconds</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>TIMEOUT_SECONDS</string>
+		</dict>
+	</array>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
